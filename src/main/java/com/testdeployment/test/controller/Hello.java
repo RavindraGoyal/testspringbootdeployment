@@ -1,11 +1,17 @@
 package com.testdeployment.test.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import com.testdeployment.test.model.Test;
+import com.testdeployment.test.service.NameAgeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class Hello {
+
+    @Autowired
+    NameAgeService nameAgeService;
 
     @GetMapping("/hello")
     public  String PrintHello(){
@@ -20,6 +26,11 @@ public class Hello {
     @GetMapping("/test-api/{name}")
     public String TestAPI(@PathVariable String name){
         return "Test API " + name;
+    }
+
+    @PostMapping("/add-name-age")
+    public Test AddNameAge(@RequestBody Test test){
+        return nameAgeService.AddNameAge(test);
     }
 
 }
