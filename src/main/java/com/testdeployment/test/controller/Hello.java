@@ -17,4 +17,9 @@ public class Hello {
         return "Hello " + name;
     }
 
+    @GetMapping("/test-api/{name}")
+    public String TestAPI(@PathVariable String name){
+        return "Test API " + name;
+    }
+
 }
