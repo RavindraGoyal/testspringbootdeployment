@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class Hello {
@@ -31,6 +32,11 @@ public class Hello {
     @PostMapping("/add-name-age")
     public Test AddNameAge(@RequestBody Test test){
         return nameAgeService.AddNameAge(test);
+    }
+
+    @GetMapping("/get-name-age/{id}")
+    public Optional<Test> getNameAge(@PathVariable Integer id){
+        return nameAgeService.getNameAge(id);
     }
 
 }
